@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:ws="http://ws-crm">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ws:findLeadsRequest>
+            <ws:highAnnualRevenue>38000.0</ws:highAnnualRevenue>
+            <ws:lowAnnualRevenue>34000.0</ws:lowAnnualRevenue>
+            <ws:state>Pays de la loire</ws:state>
+        </ws:findLeadsRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

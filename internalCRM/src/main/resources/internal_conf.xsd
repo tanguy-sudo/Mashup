@@ -1,0 +1,62 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws-crm"
+           targetNamespace="http://ws-crm" elementFormDefault="qualified">
+
+    <xs:element name="findLeadsByDateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="startDate" type="xs:dateTime"/>
+                <xs:element name="endDate" type="xs:dateTime"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="findLeadsByDateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="internalClient" type="tns:InternalClient" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="findLeadsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="lowAnnualRevenue" type="xs:double"/>
+                <xs:element name="highAnnualRevenue" type="xs:double"/>
+                <xs:element name="state" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="findLeadsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="internalClient" type="tns:InternalClient" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="InternalClient">
+        <xs:sequence>
+            <xs:element name="firstAndLastName" type="xs:string"/>
+            <xs:element name="annualRevenue" type="xs:double"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="street" type="xs:string"/>
+            <xs:element name="postalCode" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+            <xs:element name="creationDate" type="xs:dateTime"/>
+            <xs:element name="geographicPointTO" type="tns:GeographicPointTO"/>
+            <xs:element name="company" type="xs:string"/>
+            <xs:element name="state" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GeographicPointTO">
+        <xs:sequence>
+            <xs:element name="latitude" type="xs:double"/>
+            <xs:element name="longitude" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
