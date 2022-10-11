@@ -1,0 +1,12 @@
+GET http://localhost:8080/virtualCRM/findLeads?lowAnnualRevenue=10&highAnnualRevenue=10&state=test
+
+<> 2022-10-11T141534.200.json
+
+###
+
+GET http://localhost:8080/virtualCRM/findLeads?lowAnnualRevenue=10&highAnnualRevenue=10&state=test
+
+<> 2022-10-11T141533.200.json
+
+###
+

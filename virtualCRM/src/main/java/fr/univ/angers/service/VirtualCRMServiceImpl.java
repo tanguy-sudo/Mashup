@@ -1,6 +1,6 @@
-package fr.univ.angers.virtualCRM.service;
+package fr.univ.angers.service;
 
-import fr.univ.angers.virtualCRM.modele.LeadTO;
+import fr.univ.angers.modele.LeadTO;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Calendar;

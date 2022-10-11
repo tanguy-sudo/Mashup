@@ -1,4 +1,4 @@
-package fr.univ.angers.virtualCRM;
+package fr.univ.angers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EntityScan(basePackages = "fr.univ.angers.virtualCRM")
 @SpringBootApplication
 public class VirtualCrmApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(VirtualCrmApplication.class, args);
 	}
-
 }

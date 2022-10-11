@@ -1,4 +1,4 @@
-package fr.univ.angers.virtualCRM.modele;
+package fr.univ.angers.modele;
 
 import java.util.Calendar;
 

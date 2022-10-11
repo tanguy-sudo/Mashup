@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": null,
+    "lastName": null,
+    "annualRevenue": 0.0,
+    "phone": null,
+    "street": null,
+    "postalCode": null,
+    "city": null,
+    "country": null,
+    "creationDate": null,
+    "geographicPointTO": null,
+    "company": null,
+    "state": null
+  }
+]

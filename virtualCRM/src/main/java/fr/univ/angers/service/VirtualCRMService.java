@@ -1,6 +1,6 @@
-package fr.univ.angers.virtualCRM.service;
+package fr.univ.angers.service;
 
-import fr.univ.angers.virtualCRM.modele.LeadTO;
+import fr.univ.angers.modele.LeadTO;
 import java.util.Calendar;
 import java.util.List;
 

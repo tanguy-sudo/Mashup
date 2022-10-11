@@ -4,11 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf13662-6bad-416e-9e47-a7ee149c769c" name="Changes" comment="" />
+    <list default="true" id="cdf13662-6bad-416e-9e47-a7ee149c769c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/InternalClientEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/InternalClientRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/ProducingWebServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/WebServiceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/requests/request.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/requests/request2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/resources/internal_conf.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/VirtualCrmApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/controller/VirtualCRMController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/modele/GeographicPointTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/modele/LeadTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/InternCRMService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/Proxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/SalesForceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/service/VirtualCRMService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/service/VirtualCRMServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2FzKJqjn94EVLcwuLaPhWmw353N" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -18,11 +56,60 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "/home/etud/Documents/S10/Mashup/internalCRM",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "efa4a3c3854c26498c863500e843691b"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internalCRM" />
+      <recent name="$PROJECT_DIR$/virtualCRM" />
+      <recent name="$PROJECT_DIR$/internalCRM/src/main/resources" />
+      <recent name="$PROJECT_DIR$/internalCRM/src/main/java" />
+      <recent name="$PROJECT_DIR$/virtualCRM/src/main/java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.univ.angers.modele" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ProducingWebServiceApplication">
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="ProducingWebServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="internalCRM" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.univ.angers.ProducingWebServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VirtualCrmApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="virtualCRM" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.univ.angers.VirtualCrmApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests | #1" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -31,8 +118,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665489405642</updated>
+      <workItem from="1665489406862" duration="2206000" />
+      <workItem from="1665491689632" duration="186000" />
+      <workItem from="1665491885719" duration="1330000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

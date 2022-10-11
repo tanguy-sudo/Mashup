@@ -1,4 +1,4 @@
-package internalCRM;
+package fr.univ.angers;
 
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;

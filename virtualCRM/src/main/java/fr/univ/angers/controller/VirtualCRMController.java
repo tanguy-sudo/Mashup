@@ -1,8 +1,8 @@
-package fr.univ.angers.virtualCRM.controller;
+package fr.univ.angers.controller;
 
-import fr.univ.angers.virtualCRM.modele.LeadTO;
-import fr.univ.angers.virtualCRM.service.VirtualCRMService;
-import fr.univ.angers.virtualCRM.service.VirtualCRMServiceImpl;
+import fr.univ.angers.modele.LeadTO;
+import fr.univ.angers.service.VirtualCRMService;
+import fr.univ.angers.service.VirtualCRMServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
