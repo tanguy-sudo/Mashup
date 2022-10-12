@@ -5,37 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdf13662-6bad-416e-9e47-a7ee149c769c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/InternalClientEndpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/InternalClientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/ProducingWebServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/WebServiceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/requests/request.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/requests/request2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internalCRM/src/main/resources/internal_conf.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/VirtualCrmApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/controller/VirtualCRMController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/modele/GeographicPointTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/modele/LeadTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/InternCRMService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/Proxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/SalesForceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/service/VirtualCRMService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/service/VirtualCRMServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/InternCRMProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2022-10-11T141533.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2022-10-11T141534.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internalCRM/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/internalCRM/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/InternalClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/internalCRM/src/main/java/fr/univ/angers/InternalClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/virtualCRM/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/virtualCRM/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/controller/VirtualCRMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/controller/VirtualCRMController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/InternCRMService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/Proxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/Proxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/SalesForceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/SalesForceProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/proxies/Service.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/service/VirtualCRMServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/virtualCRM/src/main/java/fr/univ/angers/service/VirtualCRMServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virtualCRM/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/virtualCRM/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,26 +40,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "/home/etud/Documents/S10/Mashup/internalCRM",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "spring.configuration.checksum": "efa4a3c3854c26498c863500e843691b"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/etud/Documents/S9/Mashup&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;efa4a3c3854c26498c863500e843691b&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/internalCRM" />
@@ -82,11 +68,23 @@
       <recent name="$PROJECT_DIR$/internalCRM/src/main/java" />
       <recent name="$PROJECT_DIR$/virtualCRM/src/main/java" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="fr.univ.angers.modele" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ProducingWebServiceApplication">
+    <configuration name="Mashup-endpoints_1 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/Mashup-endpoints_1.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Mashup-endpoints_3 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/Mashup-endpoints_3.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Mashup-endpoints_4 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/Mashup-endpoints_4.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -106,6 +104,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.Mashup-endpoints_4 | #1" />
+        <item itemvalue="HTTP Request.Mashup-endpoints_3 | #1" />
+        <item itemvalue="HTTP Request.Mashup-endpoints_1 | #1" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
       </list>
     </recent_temporary>
@@ -121,6 +122,9 @@
       <workItem from="1665489406862" duration="2206000" />
       <workItem from="1665491689632" duration="186000" />
       <workItem from="1665491885719" duration="1330000" />
+      <workItem from="1665494034899" duration="2388000" />
+      <workItem from="1665504333876" duration="2075000" />
+      <workItem from="1665567490628" duration="21706000" />
     </task>
     <servers />
   </component>

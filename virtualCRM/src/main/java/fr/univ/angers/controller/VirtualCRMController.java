@@ -20,14 +20,15 @@ public class VirtualCRMController {
     }
 
     @GetMapping("/findLeads")
-    public List<LeadTO> findLeads(@RequestParam(defaultValue = "0") double lowAnnualRevenue,
-                                  @RequestParam(defaultValue = "0") double highAnnualRevenue,
-                                  @RequestParam(defaultValue = "")  String state) {
+    public List<LeadTO> findLeads(@RequestParam(required = true) double lowAnnualRevenue,
+                                  @RequestParam(required = true) double highAnnualRevenue,
+                                  @RequestParam(required = true)  String state) {
         return this.virtualCRMService.findLeads(lowAnnualRevenue, highAnnualRevenue, state);
     }
 
     @GetMapping("/findLeadsByDate")
-    public List<LeadTO> findLeadsByDate(@RequestParam Calendar startDate, @RequestParam Calendar endDate) {
+    public List<LeadTO> findLeadsByDate(@RequestParam(required = true) Calendar startDate,
+                                        @RequestParam(required = true) Calendar endDate) {
         return this.virtualCRMService.findLeadsByDate(startDate, endDate);
     }
 }

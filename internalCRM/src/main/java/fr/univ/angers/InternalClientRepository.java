@@ -32,14 +32,27 @@ public class InternalClientRepository {
         internalClient.setGeographicPointTO(geographicPointTO);
         internalClient.setCompany("Sopra steria");
         internalClient.setState("Pays de la loire");
-
         leadTOs.add(internalClient);
+
+        ws_crm.InternalClient internalClient2 = new ws_crm.InternalClient();
+        internalClient2.setFirstAndLastName("guillaume,grenon");
+        internalClient2.setAnnualRevenue(38000.0);
+        internalClient2.setPhone("0458569545");
+        internalClient2.setStreet("44 rue du pas");
+        internalClient2.setPostalCode("49000");
+        internalClient2.setCity("Angers");
+        internalClient2.setCountry("France");
+        internalClient2.setCreationDate(xmlGregorianCalendar);
+        internalClient2.setGeographicPointTO(geographicPointTO);
+        internalClient2.setCompany("je ne sais pas ");
+        internalClient2.setState("Pays de la loire");
+        leadTOs.add(internalClient2);
     }
 
     public List<ws_crm.InternalClient> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
         List<ws_crm.InternalClient> list = new ArrayList<ws_crm.InternalClient>();
         for(ws_crm.InternalClient client : leadTOs) {
-            if((client.getAnnualRevenue() > lowAnnualRevenue) && (client.getAnnualRevenue() < highAnnualRevenue) && (client.getState().equals(state))) {
+            if((client.getAnnualRevenue() >= lowAnnualRevenue) && (client.getAnnualRevenue() <= highAnnualRevenue) && (client.getState().equals(state))) {
                 list.add(client);
             }
         }
