@@ -5,6 +5,9 @@ import fr.univ.angers.modele.LeadTO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -14,6 +17,7 @@ import java.time.format.SignStyle;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 public class InternCRMProxy implements Proxy {
     @Override
@@ -30,9 +34,61 @@ public class InternCRMProxy implements Proxy {
                 "   </soapenv:Body>\r\n" +
                 "</soapenv:Envelope>";
 
-        List<LeadTO> leadTOs = new ArrayList<LeadTO>();
+        String response = callSoapService(xml);
+        return treatment(response);
+    }
+
+    @Override
+    public List<LeadTO> findLeadsByDate(XMLGregorianCalendar startDate, XMLGregorianCalendar endDate) {
+        /* place your xml request from soap ui below with necessary changes in parameters */
+        String xml="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws-crm\">\r\n" +
+                "   <soapenv:Header/>\r\n" +
+                "   <soapenv:Body>\r\n" +
+                "      <ws:findLeadsByDateRequest>\r\n" +
+                "          <ws:startDate>" + startDate.toString() + "</ws:startDate>\r\n" +
+                "          <ws:endDate>" + endDate.toString() + "</ws:endDate>\r\n" +
+                "      </ws:findLeadsByDateRequest>\r\n" +
+                "   </soapenv:Body>\r\n" +
+                "</soapenv:Envelope>";
+
+        String response = callSoapService(xml);
+        return treatment(response);
+    }
+
+    private static String callSoapService(String soapRequest) {
         try {
-            String response = callSoapService(xml);
+            String url = "http://localhost:8081/ws";
+            URL obj = new URL(url);
+
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type","text/xml; charset=utf-8");
+            con.setDoOutput(true);
+
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(soapRequest);
+            wr.flush();
+            wr.close();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            String finalvalue= response.toString();
+            return finalvalue;
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+
+    private static List<LeadTO> treatment(String response) {
+        List<LeadTO> leadTOs = new ArrayList<>();
+        try {
             JSONObject json = XML.toJSONObject(response);
             JSONObject jsonObject = json
                     .getJSONObject("SOAP-ENV:Envelope")
@@ -72,41 +128,5 @@ public class InternCRMProxy implements Proxy {
             throw new RuntimeException(e);
         }
         return leadTOs;
-    }
-
-    @Override
-    public List<LeadTO> findLeadsByDate(Calendar startDate, Calendar endDate) {
-        return null;
-    }
-
-    private static String callSoapService(String soapRequest) {
-        try {
-            String url = "http://localhost:8081/ws";
-            URL obj = new URL(url);
-
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            con.setRequestMethod("GET");
-            con.setRequestProperty("Content-Type","text/xml; charset=utf-8");
-            con.setDoOutput(true);
-
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(soapRequest);
-            wr.flush();
-            wr.close();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-
-            String finalvalue= response.toString();
-            return finalvalue;
-        }
-        catch (Exception e) {
-            return null;
-        }
     }
 }

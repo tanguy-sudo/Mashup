@@ -3,6 +3,8 @@ package fr.univ.angers.service;
 import fr.univ.angers.modele.LeadTO;
 import fr.univ.angers.proxies.Proxy;
 import org.springframework.stereotype.Service;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -53,7 +55,7 @@ public class VirtualCRMServiceImpl implements  VirtualCRMService{
     }
 
     @Override
-    public List<LeadTO> findLeadsByDate(Calendar startDate, Calendar endDate) {
+    public List<LeadTO> findLeadsByDate(XMLGregorianCalendar startDate, XMLGregorianCalendar endDate) {
         List<LeadTO> leadTOs = new ArrayList<LeadTO>();
         for(Proxy proxy : this.proxies) {
             leadTOs.addAll(proxy.findLeadsByDate(startDate, endDate));

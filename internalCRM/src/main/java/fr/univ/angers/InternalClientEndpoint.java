@@ -28,8 +28,8 @@ public class InternalClientEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "findLeadsByDateRequest")
     @ResponsePayload
-    public FindLeadsByDateResponse findLeadsByDate(@RequestPayload FindLeadsByDateRequest request) {
-        FindLeadsByDateResponse response = new FindLeadsByDateResponse();
+    public FindLeadsResponse findLeadsByDate(@RequestPayload FindLeadsByDateRequest request) {
+        FindLeadsResponse response = new FindLeadsResponse();
         response.getInternalClient().addAll(this.internalClientRepository.findLeadsByDate(request.getStartDate(), request.getEndDate()));
         return response;
     }
