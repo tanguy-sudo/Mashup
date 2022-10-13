@@ -3,8 +3,8 @@
     <soapenv:Header/>
     <soapenv:Body>
         <ws:findLeadsByDateRequest>
-            <ws:startDate>2021-05-10T00:00:00</ws:startDate>
-            <ws:endDate>2021-05-30T00:00:00</ws:endDate>
+            <ws:startDate>2021-05-10</ws:startDate>
+            <ws:endDate>2021-05-30</ws:endDate>
         </ws:findLeadsByDateRequest>
     </soapenv:Body>
 </soapenv:Envelope>

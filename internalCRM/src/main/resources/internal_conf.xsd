@@ -10,14 +10,6 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="findLeadsByDateResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="internalClient" type="tns:InternalClient" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
     <xs:element name="findLeadsRequest">
         <xs:complexType>
             <xs:sequence>
