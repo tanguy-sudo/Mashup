@@ -5,21 +5,20 @@ import fr.univ.angers.modele.LeadTO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
-
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.format.SignStyle;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class InternCRMProxy implements Proxy {
+    private static Logger logger = Logger.getLogger(String.valueOf(InternCRMProxy.class));
+
     @Override
     public List<LeadTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
         /* place your xml request from soap ui below with necessary changes in parameters */
@@ -35,7 +34,7 @@ public class InternCRMProxy implements Proxy {
                 "</soapenv:Envelope>";
 
         String response = callSoapService(xml);
-        return treatment(response);
+        return createLeads(response);
     }
 
     @Override
@@ -52,7 +51,7 @@ public class InternCRMProxy implements Proxy {
                 "</soapenv:Envelope>";
 
         String response = callSoapService(xml);
-        return treatment(response);
+        return createLeads(response);
     }
 
     private static String callSoapService(String soapRequest) {
@@ -86,9 +85,10 @@ public class InternCRMProxy implements Proxy {
         }
     }
 
-    private static List<LeadTO> treatment(String response) {
+    private static List<LeadTO> createLeads(String response) {
         List<LeadTO> leadTOs = new ArrayList<>();
         try {
+            System.out.println(response);
             JSONObject json = XML.toJSONObject(response);
             JSONObject jsonObject = json
                     .getJSONObject("SOAP-ENV:Envelope")
@@ -100,7 +100,11 @@ public class InternCRMProxy implements Proxy {
                 jsonArray = jsonObject.getJSONArray("ns2:internalClient");
             }catch (Exception e) {
                 jsonArray = new JSONArray();
-                jsonArray.put(jsonObject.getJSONObject("ns2:internalClient"));
+                if(jsonObject.isNull("ns2:internalClient")){
+                    logger.log(Level.WARNING, "Sorry, no results");
+                } else {
+                    jsonArray.put(jsonObject.getJSONObject("ns2:internalClient"));
+                }
             }
             for(int i = 0 ; i < jsonArray.length() ; i++) {
                 LeadTO leadTO = new LeadTO();

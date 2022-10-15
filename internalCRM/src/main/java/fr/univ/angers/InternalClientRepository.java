@@ -24,13 +24,13 @@ public class InternalClientRepository {
         internalClient.setFirstAndLastName("tanguy,jouvin");
         internalClient.setAnnualRevenue(36000.0);
         internalClient.setPhone("0123456789");
-        internalClient.setStreet("46 rue du bis");
+        internalClient.setStreet("19 rue du laurier");
         internalClient.setPostalCode("49000");
         internalClient.setCity("Angers");
         internalClient.setCountry("France");
         internalClient.setCreationDate(xmlGregorianCalendar);
         internalClient.setGeographicPointTO(geographicPointTO);
-        internalClient.setCompany("Sopra steria");
+        internalClient.setCompany("CapGemini");
         internalClient.setState("Pays de la loire");
         leadTOs.add(internalClient);
 
@@ -38,13 +38,13 @@ public class InternalClientRepository {
         internalClient2.setFirstAndLastName("guillaume,grenon");
         internalClient2.setAnnualRevenue(38000.0);
         internalClient2.setPhone("0458569545");
-        internalClient2.setStreet("44 rue du pas");
+        internalClient2.setStreet("19 rue de bretagne");
         internalClient2.setPostalCode("49000");
         internalClient2.setCity("Angers");
         internalClient2.setCountry("France");
         internalClient2.setCreationDate(xmlGregorianCalendar);
         internalClient2.setGeographicPointTO(geographicPointTO);
-        internalClient2.setCompany("je ne sais pas ");
+        internalClient2.setCompany("Sopra");
         internalClient2.setState("Pays de la loire");
         leadTOs.add(internalClient2);
     }
