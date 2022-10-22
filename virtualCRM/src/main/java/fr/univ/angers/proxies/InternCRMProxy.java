@@ -5,6 +5,8 @@ import fr.univ.angers.modele.LeadTO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -12,7 +14,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -107,6 +111,7 @@ public class InternCRMProxy implements Proxy {
                 }
             }
             for(int i = 0 ; i < jsonArray.length() ; i++) {
+                System.out.println(jsonArray.getJSONObject(i).toString());
                 LeadTO leadTO = new LeadTO();
                 leadTO.setFirstName(jsonArray.getJSONObject(i).getString("ns2:firstAndLastName").split(",")[0]);
                 leadTO.setLastName(jsonArray.getJSONObject(i).getString("ns2:firstAndLastName").split(",")[1]);
@@ -116,7 +121,13 @@ public class InternCRMProxy implements Proxy {
                 leadTO.setPostalCode(String.valueOf(jsonArray.getJSONObject(i).getInt("ns2:postalCode")));
                 leadTO.setCity(jsonArray.getJSONObject(i).getString("ns2:city"));
                 leadTO.setCountry(jsonArray.getJSONObject(i).getString("ns2:country"));
-                //leadTO.setCreationDate(jsonObject.getString("ns2:creationDate"));
+
+                String date = jsonArray.getJSONObject(i).getString("ns2:creationDate");
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Integer.valueOf(date.split("-")[0]),
+                        Integer.valueOf(date.split("-")[1]),
+                        Integer.valueOf(date.split("-")[2].replace("Z", "")));
+                leadTO.setCreationDate(calendar);
                 leadTO.setCompany(jsonArray.getJSONObject(i).getString("ns2:company"));
                 leadTO.setState(jsonArray.getJSONObject(i).getString("ns2:state"));
 

@@ -37,7 +37,7 @@
             <xs:element name="postalCode" type="xs:string"/>
             <xs:element name="city" type="xs:string"/>
             <xs:element name="country" type="xs:string"/>
-            <xs:element name="creationDate" type="xs:dateTime"/>
+            <xs:element name="creationDate" type="xs:date"/>
             <xs:element name="geographicPointTO" type="tns:GeographicPointTO"/>
             <xs:element name="company" type="xs:string"/>
             <xs:element name="state" type="xs:string"/>
