@@ -13,7 +13,6 @@ public class InternalClientRepository {
 
     @PostConstruct
     public void initData() {
-        ws_crm.GeographicPointTO geographicPointTO = new ws_crm.GeographicPointTO();
 
         XMLGregorianCalendar xmlGregorianCalendar = DatatypeFactory.newDefaultInstance()
                 .newXMLGregorianCalendar(2022, 10, 23, 9, 30, 0, 0, TimeZone.SHORT);
@@ -27,7 +26,6 @@ public class InternalClientRepository {
         internalClient.setCity("Angers");
         internalClient.setCountry("France");
         internalClient.setCreationDate(xmlGregorianCalendar);
-        internalClient.setGeographicPointTO(geographicPointTO);
         internalClient.setCompany("CapGemini");
         internalClient.setState("Pays de la loire");
         leadTOs.add(internalClient);
@@ -41,7 +39,6 @@ public class InternalClientRepository {
         internalClient2.setCity("Angers");
         internalClient2.setCountry("France");
         internalClient2.setCreationDate(xmlGregorianCalendar);
-        internalClient2.setGeographicPointTO(geographicPointTO);
         internalClient2.setCompany("Sopra");
         internalClient2.setState("Pays de la loire");
         leadTOs.add(internalClient2);
