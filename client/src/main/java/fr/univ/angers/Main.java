@@ -1,5 +1,6 @@
 package fr.univ.angers;
 
+import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
@@ -17,6 +18,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.sql.Timestamp;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,11 +40,14 @@ public class Main {
             } else {
                 String[] r = request.split("virtualCRM");
                 if(r.length == 2 && r[0].equals("http://localhost:8080/")) {
-                    // http://localhost:8080/virtualCRM/findLeadsByDate?startDate=2021-05-10&endDate=2021-05-30
+                    // http://localhost:8080/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2023-05-30T20:00:00
                     // http://localhost:8080/virtualCRM/findLeads?lowAnnualRevenue=34000&highAnnualRevenue=40000&state=Pays%20de%20la%20loire
-                    rss();
                     String findLeads = execute(request);
-                    System.out.println("Response : " + findLeads);
+                    if(Objects.isNull(findLeads) || findLeads.isEmpty())
+                        System.out.println("Response : Any results or invalid format");
+                    else
+                        System.out.println("Response : " + findLeads);
+                    rss();
                 } else {
                     System.out.println("Wrong url");
                 }
@@ -67,13 +73,19 @@ public class Main {
     }
 
     private static void rss() {
-        String url = "http://localhost:8080/virtualCRM/findLeadsByDate?startDate=2021-05-10&endDate=2021-05-30";
+        DateTime endDate = new DateTime();
+        Timestamp start = new Timestamp(endDate.getMillis() - (24 * 60 * 60 * 1000));
+        DateTime starDate = new DateTime(start);
+        String stringStart = starDate.toString().split("\\+")[0];
+        String stringEnd = endDate.toString().split("\\+")[0];
+
+        String url = "http://localhost:8080/virtualCRM/findLeadsByDate?startDate=" + stringStart+ "&endDate=" + stringEnd;
         String response = execute(url);
 
         String potentialclient = "<?xml version=\"1.0\" ?>\n" +
                                  "<rss version=\"2.0\">\n" +
                                  "<channel>\n" +
-                                 "  <title>Mashup</title>\n" +
+                                 "  <title>Last potential clients</title>\n" +
                                  "  <link>http://www.acme.com/</link>\n" +
                                  "  <description>potential Clients</description>\n";
 
@@ -97,20 +109,20 @@ public class Main {
             potentialclient += "   <item>\n" +
                                "      <title>" + nom + " " + prenom + " - " + societe + "</title>\n" +
                                "      <link>http://www.acme.com/" + nom + "</link> \n" +
-                               "      <description>" +
-                                        "nom : " + nom + ", " +
-                                        "prenom : " + prenom + ", " +
-                                        "annualRevenue : " + annualRevenue + ", " +
-                                        "phone : " + phone + ", " +
-                                        "street : " + street + ", " +
-                                        "postalCode : " + postalCode + ", " +
-                                        "city : " + city + ", " +
-                                        "country : " + country + ", " +
-                                        "creationDate : " + creationDate + ", " +
-                                        "societe : " + societe + ", " +
-                                        "state : " + state + ", " +
-                                        "latitude : " + latitude + ", " +
-                                        "longitude : " + longitude + ", " +
+                               "      <description>\n" +
+                                        "\t\t\tnom : " + nom + ", \n" +
+                                        "\t\t\tprenom : " + prenom + ", \n" +
+                                        "\t\t\tannualRevenue : " + annualRevenue + ", \n" +
+                                        "\t\t\tphone : " + phone + ", \n" +
+                                        "\t\t\tstreet : " + street + ", \n" +
+                                        "\t\t\tpostalCode : " + postalCode + ", \n" +
+                                        "\t\t\tcity : " + city + ", \n" +
+                                        "\t\t\tcountry : " + country + ", \n" +
+                                        "\t\t\tcreationDate : " + creationDate + ", \n" +
+                                        "\t\t\tsociete : " + societe + ", \n" +
+                                        "\t\t\tstate : " + state + ", \n" +
+                                        "\t\t\tlatitude : " + latitude + ", \n" +
+                                        "\t\t\tlongitude : " + longitude + " \n" +
                                "      </description>\n" +
                                "      <pubDate>" + creationDate + "</pubDate>\n" +
                                "   </item>\n";
@@ -130,7 +142,7 @@ public class Main {
             DOMSource source = new DOMSource(document);
             transformer.transform(source, result);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 }

@@ -13,10 +13,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,7 +52,10 @@ public class InternCRMProxy implements Proxy {
                 "</soapenv:Envelope>";
 
         String response = callSoapService(xml);
-        return createLeads(response);
+        if(Objects.nonNull(response))
+            return createLeads(response);
+        else
+            return new ArrayList<LeadTO>();
     }
 
     private static String callSoapService(String soapRequest) {
@@ -111,7 +111,6 @@ public class InternCRMProxy implements Proxy {
                 }
             }
             for(int i = 0 ; i < jsonArray.length() ; i++) {
-                System.out.println(jsonArray.getJSONObject(i).toString());
                 LeadTO leadTO = new LeadTO();
                 leadTO.setFirstName(jsonArray.getJSONObject(i).getString("ns2:firstAndLastName").split(",")[0]);
                 leadTO.setLastName(jsonArray.getJSONObject(i).getString("ns2:firstAndLastName").split(",")[1]);
@@ -122,26 +121,61 @@ public class InternCRMProxy implements Proxy {
                 leadTO.setCity(jsonArray.getJSONObject(i).getString("ns2:city"));
                 leadTO.setCountry(jsonArray.getJSONObject(i).getString("ns2:country"));
 
-                String date = jsonArray.getJSONObject(i).getString("ns2:creationDate");
+                String creationDate = jsonArray.getJSONObject(i).getString("ns2:creationDate");
+                // Exemple : 2021-06-15T20:00:00.324Z
+                String date = creationDate.split("T")[0];
+                String time = creationDate.split("T")[1];
+
                 Calendar calendar = Calendar.getInstance();
-                calendar.set(Integer.valueOf(date.split("-")[0]),
-                        Integer.valueOf(date.split("-")[1]),
-                        Integer.valueOf(date.split("-")[2].replace("Z", "")));
+                calendar.set(Integer.parseInt(date.split("-")[0]),
+                             getMonth(Integer.parseInt(date.split("-")[1])),
+                             Integer.parseInt(date.split("-")[2]),
+                             Integer.parseInt(time.split(":")[0]),
+                             Integer.parseInt(time.split(":")[1]),
+                             Integer.parseInt(time.split(":")[2].split("\\.")[0]));
                 leadTO.setCreationDate(calendar);
+
                 leadTO.setCompany(jsonArray.getJSONObject(i).getString("ns2:company"));
                 leadTO.setState(jsonArray.getJSONObject(i).getString("ns2:state"));
-
-                JSONObject obj = jsonArray.getJSONObject(i).getJSONObject("ns2:geographicPointTO");
                 GeographicPointTO geographicPointTO = new GeographicPointTO();
-                geographicPointTO.setLatitude(obj.getInt("ns2:latitude"));
-                geographicPointTO.setLongitude(obj.getInt("ns2:longitude"));
                 leadTO.setGeographicPointTO(geographicPointTO);
 
                 leadTOs.add(leadTO);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            logger.log(Level.WARNING, e.getMessage());
         }
         return leadTOs;
+    }
+
+    private static int getMonth(int month) {
+        switch (month) {
+            case 1 :
+                return Calendar.JANUARY;
+            case 2 :
+                return Calendar.FEBRUARY;
+            case 3 :
+                return Calendar.MARCH;
+            case 4 :
+                return Calendar.APRIL;
+            case 5 :
+                return Calendar.MAY;
+            case 6 :
+                return Calendar.JUNE;
+            case 7 :
+                return Calendar.JULY;
+            case 8 :
+                return Calendar.AUGUST;
+            case 9 :
+                return Calendar.SEPTEMBER;
+            case 10 :
+                return Calendar.OCTOBER;
+            case 11 :
+                return Calendar.NOVEMBER;
+            case 12 :
+                return Calendar.DECEMBER;
+            default :
+                return 13;
+        }
     }
 }

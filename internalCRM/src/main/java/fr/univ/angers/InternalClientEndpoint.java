@@ -31,7 +31,6 @@ public class InternalClientEndpoint {
     public FindLeadsResponse findLeadsByDate(@RequestPayload FindLeadsByDateRequest request) {
         FindLeadsResponse response = new FindLeadsResponse();
         response.getInternalClient().addAll(this.internalClientRepository.findLeadsByDate(request.getStartDate(), request.getEndDate()));
-        System.out.println(response.getInternalClient().get(0).getCreationDate().toString());
         return response;
     }
 }
