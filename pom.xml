@@ -11,7 +11,7 @@
     <modules>
         <module>virtualCRM</module>
         <module>internalCRM</module>
-        <module>Client</module>
+        <module>client</module>
     </modules>
 
     <properties>

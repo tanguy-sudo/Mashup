@@ -13,12 +13,10 @@ public class InternalClientRepository {
 
     @PostConstruct
     public void initData() {
-        ws_crm.GeographicPointTO geographicPointTO = new ws_crm.GeographicPointTO ();
-        geographicPointTO.setLatitude(1.0);
-        geographicPointTO.setLongitude(2.0);
+        ws_crm.GeographicPointTO geographicPointTO = new ws_crm.GeographicPointTO();
 
         XMLGregorianCalendar xmlGregorianCalendar = DatatypeFactory.newDefaultInstance()
-                .newXMLGregorianCalendarDate(2021, 05, 23, TimeZone.SHORT);
+                .newXMLGregorianCalendar(2022, 10, 23, 9, 30, 0, 0, TimeZone.SHORT);
 
         ws_crm.InternalClient internalClient = new ws_crm.InternalClient();
         internalClient.setFirstAndLastName("tanguy,jouvin");
