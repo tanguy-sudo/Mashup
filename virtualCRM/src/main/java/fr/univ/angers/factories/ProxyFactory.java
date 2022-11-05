@@ -19,6 +19,7 @@ public class ProxyFactory {
         FileInputStream ip = null;
 
         try {
+            // application.properties with jar
             ip = new FileInputStream("virtualCRM/src/main/resources/application.properties");
             // Charge le fichier de configuration
             pros.load(ip);

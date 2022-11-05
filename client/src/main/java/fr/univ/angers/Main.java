@@ -73,7 +73,7 @@ public class Main {
     }
 
     private static void rss() {
-        DateTime endDate = new DateTime();
+        DateTime endDate = DateTime.now();
         Timestamp start = new Timestamp(endDate.getMillis() - (24 * 60 * 60 * 1000));
         DateTime starDate = new DateTime(start);
         String stringStart = starDate.toString().split("\\+")[0];
