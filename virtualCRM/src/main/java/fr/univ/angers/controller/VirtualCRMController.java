@@ -8,6 +8,7 @@ import fr.univ.angers.service.VirtualCRMService;
 import fr.univ.angers.service.VirtualCRMServiceImpl;
 import org.joda.time.DateTime;
 import org.json.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,7 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/virtualCRM")
 public class VirtualCRMController {
+
     private final List<Proxy> proxies;
     private final VirtualCRMService virtualCRMService;
     private static Logger logger = Logger.getLogger(String.valueOf(VirtualCRMController.class));
