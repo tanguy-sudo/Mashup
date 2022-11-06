@@ -14,7 +14,7 @@ public class RssFeedController {
     @Autowired
     private RssFeedView view;
 
-    @GetMapping("/lastDay")
+    @GetMapping("/potentialclients")
     public View getFeed() {
         return view;
     }
