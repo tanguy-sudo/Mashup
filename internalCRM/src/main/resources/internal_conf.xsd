@@ -10,14 +10,6 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="findLeadsByDateResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="internalClient" type="tns:InternalClient" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
     <xs:element name="findLeadsRequest">
         <xs:complexType>
             <xs:sequence>
@@ -46,16 +38,8 @@
             <xs:element name="city" type="xs:string"/>
             <xs:element name="country" type="xs:string"/>
             <xs:element name="creationDate" type="xs:dateTime"/>
-            <xs:element name="geographicPointTO" type="tns:GeographicPointTO"/>
             <xs:element name="company" type="xs:string"/>
             <xs:element name="state" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="GeographicPointTO">
-        <xs:sequence>
-            <xs:element name="latitude" type="xs:double"/>
-            <xs:element name="longitude" type="xs:double"/>
         </xs:sequence>
     </xs:complexType>
 

@@ -11,6 +11,8 @@
     <modules>
         <module>virtualCRM</module>
         <module>internalCRM</module>
+        <module>client</module>
+        <module>rss</module>
     </modules>
 
     <properties>

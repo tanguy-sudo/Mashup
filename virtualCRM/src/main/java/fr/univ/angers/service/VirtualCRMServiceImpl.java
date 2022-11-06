@@ -2,26 +2,22 @@ package fr.univ.angers.service;
 
 import fr.univ.angers.modele.LeadTO;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.Calendar;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.List;
 
 @Service
 public class VirtualCRMServiceImpl implements  VirtualCRMService{
 
-    @Override
-    public List<LeadTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
-        LeadTO leadTO = new LeadTO();
-        List<LeadTO> leadTOs = new ArrayList<LeadTO>();
-        leadTOs.add(leadTO);
-        return leadTOs;
+    public VirtualCRMServiceImpl() {
     }
 
     @Override
-    public List<LeadTO> findLeadsByDate(Calendar startDate, Calendar endDate) {
-        LeadTO leadTO = new LeadTO();
-        List<LeadTO> leadTOs = new ArrayList<LeadTO>();
-        leadTOs.add(leadTO);
-        return leadTOs;
+    public List<LeadTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
+        return null;
+    }
+
+    @Override
+    public List<LeadTO> findLeadsByDate(XMLGregorianCalendar startDate, XMLGregorianCalendar endDate) {
+        return null;
     }
 }
