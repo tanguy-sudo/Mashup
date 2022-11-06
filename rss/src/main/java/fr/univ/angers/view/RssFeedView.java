@@ -1,4 +1,4 @@
-package fr.univ.angers;
+package fr.univ.angers.view;
 
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Description;
@@ -41,9 +41,9 @@ public class RssFeedView extends AbstractRssFeedView {
         String stringStart = starDate.toString().split("\\+")[0];
         String stringEnd = endDate.toString().split("\\+")[0];
 
-        String url = "http://localhost:8080/virtualCRM/findLeadsByDate?startDate=" + stringStart+ "&endDate=" + stringEnd;
+        //String url = "http://localhost:8083/virtualCRM/findLeadsByDate?startDate=" + stringStart+ "&endDate=" + stringEnd;
         // For test
-        //String url = "http://localhost:8080/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2023-05-30T20:00:00";
+        String url = "http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2023-05-30T20:00:00";
         String res = execute(url);
 
         List<Item> items = new ArrayList<Item>();

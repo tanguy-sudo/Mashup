@@ -5,8 +5,6 @@ import fr.univ.angers.modele.LeadTO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
-
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

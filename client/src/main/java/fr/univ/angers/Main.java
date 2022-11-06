@@ -24,16 +24,16 @@ public class Main {
                 break;
             } else {
                 String[] r = request.split("virtualCRM");
-                if(r.length == 2 && r[0].equals("http://localhost:8080/")) {
-                    // http://localhost:8080/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2023-05-30T20:00:00
-                    // http://localhost:8080/virtualCRM/findLeads?lowAnnualRevenue=34000&highAnnualRevenue=40000&state=Pays%20de%20la%20loire
+                if(r.length == 2 && r[0].equals("http://localhost:8083/")) {
+                    // http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2023-05-30T20:00:00
+                    // http://localhost:8083/virtualCRM/findLeads?lowAnnualRevenue=34000&highAnnualRevenue=40000&state=Pays%20de%20la%20loire
                     String findLeads = execute(request);
                     if(Objects.isNull(findLeads) || findLeads.isEmpty())
                         System.out.println("Response : Any results or invalid format");
                     else
                         System.out.println("Response : " + findLeads);
                 } else {
-                    System.out.println("Wrong url");
+                    System.out.println("Wrong url or port");
                 }
                 System.out.print("Request : " );
             }
@@ -52,6 +52,7 @@ public class Main {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception e) {
             logger.log(Level.WARNING, e.getMessage());
+            return "";
         }
         return response.body();
     }

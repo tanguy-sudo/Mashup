@@ -1,5 +1,6 @@
-package fr.univ.angers;
+package fr.univ.angers.controller;
 
+import fr.univ.angers.view.RssFeedView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ public class RssFeedController {
     @Autowired
     private RssFeedView view;
 
-    @GetMapping("/lastDay")
+    @GetMapping("/potentialclients")
     public View getFeed() {
         return view;
     }

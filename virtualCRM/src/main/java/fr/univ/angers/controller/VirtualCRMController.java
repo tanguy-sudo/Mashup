@@ -26,14 +26,13 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/virtualCRM")
 public class VirtualCRMController {
-
-    private final List<Proxy> proxies;
-    private final VirtualCRMService virtualCRMService;
+    @Autowired
+    private  ProxyFactory proxyFactory;
+    private VirtualCRMService virtualCRMService;
     private static Logger logger = Logger.getLogger(String.valueOf(VirtualCRMController.class));
 
     public VirtualCRMController() {
         this.virtualCRMService = new VirtualCRMServiceImpl();
-        this.proxies = ProxyFactory.getProxies();
     }
 
     @GetMapping("/findLeads")
@@ -41,7 +40,7 @@ public class VirtualCRMController {
                                   @RequestParam(required = true) double highAnnualRevenue,
                                   @RequestParam(required = true)  String state) {
         List<LeadTO> leadTOs = new ArrayList<LeadTO>();
-        for(Proxy proxy : this.proxies) {
+        for(Proxy proxy : this.proxyFactory.getProxies()) {
             leadTOs.addAll(proxy.findLeads(lowAnnualRevenue, highAnnualRevenue, state));
         }
         return callOpenStreetMap(leadTOs);
@@ -74,11 +73,15 @@ public class VirtualCRMController {
                             TimeZone.SHORT);
 
             List<LeadTO> leadTOs = new ArrayList<LeadTO>();
-            for(Proxy proxy : this.proxies) {
+            for(Proxy proxy : this.proxyFactory.getProxies()) {
                 leadTOs.addAll(proxy.findLeadsByDate(start, end));
             }
 
-            return callOpenStreetMap(leadTOs);
+            if(leadTOs.isEmpty()){
+                return leadTOs;
+            } else {
+                return callOpenStreetMap(leadTOs);
+            }
         } catch (Exception e) {
             logger.log(Level.WARNING, e.getMessage());
             return null;
