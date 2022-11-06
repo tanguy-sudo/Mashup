@@ -27,6 +27,19 @@ Liste des technologies utilisées dans le projet :
 ```
 - git clone git@github.com:tanguy-sudo/Mashup.git
 ```
+Si vous téléchargez le projet en ZIP il  faudra par la suite le décompresser : 
+```
+- Sous Windows : 
+  - Ouvrez l’Explorateur de fichiers et accédez au dossier compressé.
+  - Faites un clic droit pour sélectionner "Extraire tout" , puis suivez les instructions.
+- Sous Linux :
+  - Installer unzip : sudo apt install unzip
+  - Exécuter le commande : unzip Mashup-master.zip
+- Sous Mac :
+  - Double-cliquez sur le fichier.
+  ou
+  - Exécuter le commande : unzip Mashup-master.zip
+```
 
 ### Client
 Une fois dans le répertoire **client**.
