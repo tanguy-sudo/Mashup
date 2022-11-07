@@ -24,6 +24,7 @@ Liste des technologies utilisées dans le projet :
 ***
 - Pour la suite, les commandes données sont à exécuter dans un terminal.
 - Pour installer le projet vous pouvez le cloner avec une clé SSH, ou bien télécharger le dossier ZIP.
+- Vous devez avoir JAVA 11 d'installé sur votre pc ainsi que maven version 3.6.3.
 ```
 - git clone git@github.com:tanguy-sudo/Mashup.git
 ```
