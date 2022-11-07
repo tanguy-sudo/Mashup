@@ -43,7 +43,9 @@ public class VirtualCRMController {
         for(Proxy proxy : this.proxyFactory.getProxies()) {
             leadTOs.addAll(proxy.findLeads(lowAnnualRevenue, highAnnualRevenue, state));
         }
-        return callOpenStreetMap(leadTOs);
+        callOpenStreetMap(leadTOs);
+        Collections.sort(leadTOs, (o1, o2) -> (int) (o1.getAnnualRevenue() - o2.getAnnualRevenue()));
+        return leadTOs; 
     }
 
     @GetMapping("/findLeadsByDate")
@@ -77,18 +79,18 @@ public class VirtualCRMController {
                 leadTOs.addAll(proxy.findLeadsByDate(start, end));
             }
 
-            if(leadTOs.isEmpty()){
-                return leadTOs;
-            } else {
-                return callOpenStreetMap(leadTOs);
+            if(!leadTOs.isEmpty()){
+                callOpenStreetMap(leadTOs);
+                Collections.sort(leadTOs, (o1, o2) -> (int) (o1.getAnnualRevenue() - o2.getAnnualRevenue()));
             }
+            return leadTOs;
         } catch (Exception e) {
             logger.log(Level.WARNING, e.getMessage());
             return null;
         }
     }
 
-    private static List<LeadTO> callOpenStreetMap(List<LeadTO> leadTOs) {
+    private static void callOpenStreetMap(List<LeadTO> leadTOs) {
         try {
             for(LeadTO leadTO : leadTOs) {
                 String uri = "https://nominatim.openstreetmap.org/search?adressdetails=1&";
@@ -114,7 +116,6 @@ public class VirtualCRMController {
         } catch (Exception e) {
             logger.log(Level.WARNING, e.getMessage());
         }
-        return leadTOs;
     }
 
     private static String execute(String url) {

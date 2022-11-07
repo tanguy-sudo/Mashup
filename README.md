@@ -49,12 +49,12 @@ Une fois dans le répertoire **client**.
 - java -jar target/client-1.0-SNAPSHOT-jar-with-dependencies.jar 
 ```
 
-### Serveur : internCRM
-Une fois dans le répertoire **internCRM**.
+### Serveur : internalCRM
+Une fois dans le répertoire **internalCRM**.
 ```  
 - mvn install
 - mvn clean package spring-boot:repackage
-- java -jar target/internCRM-2.7.4.jar 
+- java -jar target/internalCRM-2.7.4.jar 
 
 Le serveur virtualCRM est exposé sur le port 8081
 ```
