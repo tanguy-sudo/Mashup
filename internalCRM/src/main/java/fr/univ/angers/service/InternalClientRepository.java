@@ -1,5 +1,6 @@
-package fr.univ.angers;
+package fr.univ.angers.service;
 
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.xml.datatype.DatatypeConstants;
@@ -16,6 +17,18 @@ public class InternalClientRepository {
 
         XMLGregorianCalendar xmlGregorianCalendar = DatatypeFactory.newDefaultInstance()
                 .newXMLGregorianCalendar(2022, 10, 23, 9, 30, 0, 0, TimeZone.SHORT);
+
+        DateTime dateTime = new DateTime();
+
+        XMLGregorianCalendar currentDateTime = DatatypeFactory.newDefaultInstance()
+        .newXMLGregorianCalendar(dateTime.getYear(),
+                dateTime.getMonthOfYear(),
+                dateTime.getDayOfMonth(),
+                dateTime.getHourOfDay(),
+                dateTime.getMinuteOfHour(),
+                dateTime.getSecondOfMinute(),
+                0,
+                TimeZone.SHORT);
 
         ws_crm.InternalClient internalClient = new ws_crm.InternalClient();
         internalClient.setFirstAndLastName("tanguy,jouvin");
@@ -52,7 +65,7 @@ public class InternalClientRepository {
         internalClient3.setPostalCode("49000");
         internalClient3.setCity("Angers");
         internalClient3.setCountry("France");
-        internalClient3.setCreationDate(xmlGregorianCalendar);
+        internalClient3.setCreationDate(currentDateTime);
         internalClient3.setCompany("Sopra");
         internalClient3.setState("Maine et loire");
         leadTOs.add(internalClient3);
