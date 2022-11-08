@@ -12,6 +12,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Calendar;
+import fr.univ.angers.utility.CalendarConverter;
 
 public class SalesForceProxy implements Proxy {
 
@@ -36,39 +39,25 @@ public class SalesForceProxy implements Proxy {
     private static final String CLIENT_SECRET = "EBF3A82289F4483CA0EEEB7E40ACC5869A6FD84D1C5907D6FE7BD077363156B0";
     private static final String QUERY_DATAS = "FirstName, LastName, AnnualRevenue, Phone, Street, City, Country, CreatedDate, Company, State, PostalCode";
 
-    public static void main(String[] args) {
-        //String query = "Select " + QUERY_DATAS + " from Lead";// where AnnualRevenue = " + String.valueOf(2000);
-
-        String query = "Select " + QUERY_DATAS + " from Lead where AnnualRevenue > " + new BigDecimal("0").toPlainString() + " AND AnnualRevenue < " + new BigDecimal("10E8").toPlainString() + " AND State = " + "'FL' LIMIT 1";
-        //String query = "Select FIELDS(ALL) from Lead LIMIT 1";
-        List<LeadTO> listLeadTO = createLeads(queryLeads(getToken(), query));
-
-        System.out.println("----- Found Leads : -----");
-        for (LeadTO lead : listLeadTO)
-        {
-            System.out.println(lead + "\n");
-        }
-    }
-
     @Override
     public List<LeadTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
         // FindLeadsByRevenue
-        String query = "Select " + QUERY_DATAS + " from Lead where AnnualRevenue > " + new BigDecimal(lowAnnualRevenue).toPlainString() + " AND AnnualRevenue < " + new BigDecimal(highAnnualRevenue).toPlainString() + " AND State = '" + state + "'";
-
+        String query = "Select " + QUERY_DATAS + " from Lead where AnnualRevenue > " + new BigDecimal(lowAnnualRevenue).toPlainString() 
+            + " AND AnnualRevenue < " + new BigDecimal(highAnnualRevenue).toPlainString() + " AND State = '" + state + "'";
         return createLeads(queryLeads(getToken(), query));
     }
     /*
 
             ENCODE >=
 
-     */
+    */
 
     @Override
     public List<LeadTO> findLeadsByDate(XMLGregorianCalendar startDate, XMLGregorianCalendar endDate) {
-        //String query = "Select " + QUERY_DATAS + " from Lead where AnnualRevenue > " + new BigDecimal(lowAnnualRevenue).toPlainString() + " AND AnnualRevenue < " + new BigDecimal(highAnnualRevenue).toPlainString() + " AND State = '" + state + "'";
-
-        //return createLeads(queryLeads(getToken(), query));
-        return null;
+        DateTime start = new DateTime(startDate.getYear(), startDate.getMonth(), startDate.getDay(), startDate.getHour(), startDate.getMinute());
+        DateTime end = new DateTime(endDate.getYear(), endDate.getMonth(), endDate.getDay(), endDate.getHour(), endDate.getMinute());
+        String query = "Select " + QUERY_DATAS + " from Lead where CreatedDate >= " + start.toString() + " AND CreatedDate <= " + end;
+        return createLeads(queryLeads(getToken(), query));
     }
 
     private static String callSalesforceApi() {
@@ -142,32 +131,62 @@ public class SalesForceProxy implements Proxy {
                 LeadTO leadTO = new LeadTO();
                 leadTO.setFirstName(jsonArray.getJSONObject(i).getString("FirstName"));
                 leadTO.setLastName(jsonArray.getJSONObject(i).getString("LastName"));
-                leadTO.setAnnualRevenue(jsonArray.getJSONObject(i).getDouble("AnnualRevenue"));
-                leadTO.setPhone(jsonArray.getJSONObject(i).getString("Phone"));
-                leadTO.setStreet(jsonArray.getJSONObject(i).getString("Street"));
-                leadTO.setPostalCode(String.valueOf(jsonArray.getJSONObject(i).getInt("PostalCode")));
-                leadTO.setCity(jsonArray.getJSONObject(i).getString("City"));
-                leadTO.setCountry(jsonArray.getJSONObject(i).getString("Country"));
+                if(jsonArray.getJSONObject(i).isNull("AnnualRevenue")) {
+                    break;
+                }
+                else {
+                    BigDecimal revenue = jsonArray.getJSONObject(i).getBigDecimal("AnnualRevenue");
+                    leadTO.setAnnualRevenue(revenue.doubleValue());
+                }
+                if(jsonArray.getJSONObject(i).isNull("Phone")) {
+                    break;
+                }
+                else leadTO.setPhone(jsonArray.getJSONObject(i).getString("Phone"));
+                if(jsonArray.getJSONObject(i).isNull("Street")) {
+                    break;
+                }
+                else leadTO.setStreet(jsonArray.getJSONObject(i).getString("Street"));
+                if(jsonArray.getJSONObject(i).isNull("PostalCode")) {
+                    break;
+                }
+                else leadTO.setPostalCode(String.valueOf(jsonArray.getJSONObject(i).getInt("PostalCode")));
+                if(jsonArray.getJSONObject(i).isNull("City")) {
+                    break;
+                }
+                else leadTO.setCity(jsonArray.getJSONObject(i).getString("City"));
+                if(jsonArray.getJSONObject(i).isNull("Country")) {
+                    break;
+                }
+                else leadTO.setCountry(jsonArray.getJSONObject(i).getString("Country"));
 
-                //String creationDate = jsonArray.getJSONObject(i).getString("CreatedDate");
-                // Exemple : 2021-06-15T20:00:00.324Z
-                /*
-                String date = creationDate.split("T")[0];
-                String time = creationDate.split("T")[1];
+                if(jsonArray.getJSONObject(i).isNull("CreatedDate")) {
+                    break;
+                }
+                else {
+                    String creationDate = jsonArray.getJSONObject(i).getString("CreatedDate");
+                    // Exemple : 2021-06-15T20:00:00.324Z
+                    String date = creationDate.split("T")[0];
+                    String time = creationDate.split("T")[1];
 
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Integer.parseInt(date.split("-")[0]),
-                        getMonth(Integer.parseInt(date.split("-")[1])),
-                        Integer.parseInt(date.split("-")[2]),
-                        Integer.parseInt(time.split(":")[0]),
-                        Integer.parseInt(time.split(":")[1]),
-                        Integer.parseInt(time.split(":")[2].split("\\.")[0]));
-                leadTO.setCreationDate(calendar);
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(Integer.parseInt(date.split("-")[0]),
+                            CalendarConverter.getMonth(Integer.parseInt(date.split("-")[1])),
+                            Integer.parseInt(date.split("-")[2]),
+                            Integer.parseInt(time.split(":")[0]),
+                            Integer.parseInt(time.split(":")[1]),
+                            Integer.parseInt(time.split(":")[2].split("\\.")[0]));
+                    leadTO.setCreationDate(calendar);
+                }
 
-                 */
 
-                leadTO.setCompany(jsonArray.getJSONObject(i).getString("Company"));
-                leadTO.setState(jsonArray.getJSONObject(i).getString("State"));
+                if(jsonArray.getJSONObject(i).isNull("Company")) {
+                    break;
+                }
+                else leadTO.setCompany(jsonArray.getJSONObject(i).getString("Company"));
+                if(jsonArray.getJSONObject(i).isNull("State")) {
+                    leadTO.setState("");
+                }
+                else leadTO.setState(jsonArray.getJSONObject(i).getString("State"));
                 GeographicPointTO geographicPointTO = new GeographicPointTO();
                 leadTO.setGeographicPointTO(geographicPointTO);
 

@@ -24,7 +24,6 @@ public class InternCRMProxy implements Proxy {
 
     @Override
     public List<LeadTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
-        System.out.println("TEST");
         /* place your xml request from soap ui below with necessary changes in parameters */
         String xml="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws-crm\">\r\n" +
                 "   <soapenv:Header/>\r\n" +
