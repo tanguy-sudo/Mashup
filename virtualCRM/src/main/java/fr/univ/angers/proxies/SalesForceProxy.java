@@ -16,7 +16,6 @@ import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -29,14 +28,12 @@ import java.util.logging.Logger;
 public class SalesForceProxy implements Proxy {
 
     private static final Logger logger = Logger.getLogger(String.valueOf(SalesForceProxy.class));
-
     private static final String USERNAME = "grenong07crm@mail.com";
     private static final String PASSWORD = "Password49";
     private static final String URL = "https://login.salesforce.com/services/oauth2/token";
     private static final String QUERY_URL = "https://ggcrm2-dev-ed.develop.my.salesforce.com/services/data/v56.0/query";
     private static final String CLIENT_ID = "3MVG9QV5z8XnLDvxLmZ3oxWSJzPouZ2ripP2QdWcDWDWu.tefYJz38l.7OMlNI1HPS9Q._zmrmIUWZvQKgAh.";
     private static final String CLIENT_SECRET = "EBF3A82289F4483CA0EEEB7E40ACC5869A6FD84D1C5907D6FE7BD077363156B0";
-
     private static final String QUERY_DATAS = "FirstName, LastName, AnnualRevenue, Phone, Street, City, Country, CreatedDate, Company, State, PostalCode";
 
     public static void main(String[] args) {

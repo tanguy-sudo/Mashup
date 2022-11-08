@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import javax.xml.datatype.XMLGregorianCalendar;
+import fr.univ.angers.utility.CalendarConverter;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -17,8 +18,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static fr.univ.angers.util.CalendarConverter.getMonth;
 
 public class InternCRMProxy implements Proxy {
     private static final Logger logger = Logger.getLogger(String.valueOf(InternCRMProxy.class));
@@ -39,7 +38,10 @@ public class InternCRMProxy implements Proxy {
                 "</soapenv:Envelope>";
 
         String response = callSoapService(xml);
-        return createLeads(response);
+        if(Objects.nonNull(response))
+            return createLeads(response);
+        else
+            return new ArrayList<LeadTO>();
     }
 
     @Override
@@ -132,7 +134,7 @@ public class InternCRMProxy implements Proxy {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Integer.parseInt(date.split("-")[0]),
-                             getMonth(Integer.parseInt(date.split("-")[1])),
+                             CalendarConverter.getMonth(Integer.parseInt(date.split("-")[1])),
                              Integer.parseInt(date.split("-")[2]),
                              Integer.parseInt(time.split(":")[0]),
                              Integer.parseInt(time.split(":")[1]),

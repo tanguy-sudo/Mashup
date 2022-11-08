@@ -1,4 +1,4 @@
-package fr.univ.angers.util;
+package fr.univ.angers.utility;
 
 import java.util.Calendar;
 
