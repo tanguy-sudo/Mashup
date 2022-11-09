@@ -1,8 +1,8 @@
 ## Table des matières
 1. [Info générale](#info-générale)
 2. [Technologies](#technologies)
-3. [Installations](#installations)
-4. [Executable](#executable)
+3. [Executables](#executables)
+4. [Installations](#installations)
 5. [Exemples d'utilisation](#exemples-dutilisation)
 6. [Collaboration](#collaboration)
 
@@ -18,7 +18,18 @@ Liste des technologies utilisées dans le projet :
 * [JAVA](https://www.oracle.com/fr/java/technologies/javase/jdk11-archive-downloads.html) Version 11
 * [Intellij IDEA](https://www.jetbrains.com/fr-fr/idea/) Version 17.0.3
 * [SpringBoot](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot/2.7.5) Version 2.7.5
-* [Apache Maven](https://maven.apache.org/download.cgi) Version 3.6.3
+* [Apache Maven](https://maven.apache.org/download.cgi) Version 3.6.3  
+  
+Si vous utilisé le fichier ```run_mvn.sh``` ou ```run_jar.sh```
+* [xterm](https://doc.ubuntu-fr.org/xterm)
+
+## Executables
+Dans le dossier exécutable se trouve les 4 archives JAR.
+```
+- ./run_jar.sh : cela exécute les 4 JAR dans des terminaux.
+ou
+- ./run_mvn.sh : cela compile et exécute tous les modules dans des terminaux.
+```
 
 ## Installations
 ***
@@ -80,13 +91,6 @@ Une fois dans le répertoire **virtualCRM**.
 Le serveur virtualCRM est exposé sur le port 8083
 ```
 
-## Executable
-Dans le dossier exécutable se trouve les 4 archives JAR, vous pouvez les exécuter
-avec la commande suivante ; 
-```
-- java -jar nom_du_fichier.jar
-```
-
 ## Exemples d'utilisation
 ***
 Dans un terminal lorsque que vous exécutez la commande 
@@ -95,8 +99,10 @@ le client est lancé et vous pouvez par la suite taper une
 URL que vous souhaitez que le client va exécuter.  
 Exemples :
 ```
-- http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2023-05-30T20:00:00
+- http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-11-07T10:00:00&endDate=2023-11-07T14:00:00
+- http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-10-10T20:00:00&endDate=2022-10-30T20:00:00
 - http://localhost:8083/virtualCRM/findLeads?lowAnnualRevenue=34000&highAnnualRevenue=40000&state=Pays%20de%20la%20loire
+- http://localhost:8083/virtualCRM/findLeads?lowAnnualRevenue=0&highAnnualRevenue=1000000000&state=FL
 ```
 Dans un terminal lorsque que vous exécutez la commande
 ```java -jar target/rss-2.7.4.jar ```
