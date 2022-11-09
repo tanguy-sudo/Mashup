@@ -6,17 +6,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import javax.xml.datatype.XMLGregorianCalendar;
+import fr.univ.angers.utility.CalendarConverter;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class InternCRMProxy implements Proxy {
-    private static Logger logger = Logger.getLogger(String.valueOf(InternCRMProxy.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(InternCRMProxy.class));
 
     @Override
     public List<LeadTO> findLeads(double lowAnnualRevenue, double highAnnualRevenue, String state) {
@@ -33,7 +37,10 @@ public class InternCRMProxy implements Proxy {
                 "</soapenv:Envelope>";
 
         String response = callSoapService(xml);
-        return createLeads(response);
+        if(Objects.nonNull(response))
+            return createLeads(response);
+        else
+            return new ArrayList<LeadTO>();
     }
 
     @Override
@@ -79,10 +86,10 @@ public class InternCRMProxy implements Proxy {
             }
             in.close();
 
-            String finalvalue= response.toString();
-            return finalvalue;
+            return response.toString();
         }
         catch (Exception e) {
+            logger.info(e.getMessage());
             return null;
         }
     }
@@ -126,7 +133,7 @@ public class InternCRMProxy implements Proxy {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Integer.parseInt(date.split("-")[0]),
-                             getMonth(Integer.parseInt(date.split("-")[1])),
+                             CalendarConverter.getMonth(Integer.parseInt(date.split("-")[1])),
                              Integer.parseInt(date.split("-")[2]),
                              Integer.parseInt(time.split(":")[0]),
                              Integer.parseInt(time.split(":")[1]),
@@ -144,36 +151,5 @@ public class InternCRMProxy implements Proxy {
             logger.log(Level.WARNING, e.getMessage());
         }
         return leadTOs;
-    }
-
-    private static int getMonth(int month) {
-        switch (month) {
-            case 1 :
-                return Calendar.JANUARY;
-            case 2 :
-                return Calendar.FEBRUARY;
-            case 3 :
-                return Calendar.MARCH;
-            case 4 :
-                return Calendar.APRIL;
-            case 5 :
-                return Calendar.MAY;
-            case 6 :
-                return Calendar.JUNE;
-            case 7 :
-                return Calendar.JULY;
-            case 8 :
-                return Calendar.AUGUST;
-            case 9 :
-                return Calendar.SEPTEMBER;
-            case 10 :
-                return Calendar.OCTOBER;
-            case 11 :
-                return Calendar.NOVEMBER;
-            case 12 :
-                return Calendar.DECEMBER;
-            default :
-                return 13;
-        }
     }
 }

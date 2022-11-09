@@ -25,8 +25,10 @@ public class Main {
             } else {
                 String[] r = request.split("virtualCRM");
                 if(r.length == 2 && r[0].equals("http://localhost:8083/")) {
-                    // http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2023-05-30T20:00:00
+                    // http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-11-07T10:00:00&endDate=2023-11-07T14:00:00
+                    // http://localhost:8083/virtualCRM/findLeadsByDate?startDate=2022-05-10T20:00:00&endDate=2022-05-30T20:00:00
                     // http://localhost:8083/virtualCRM/findLeads?lowAnnualRevenue=34000&highAnnualRevenue=40000&state=Pays%20de%20la%20loire
+                    // http://localhost:8083/virtualCRM/findLeads?lowAnnualRevenue=0&highAnnualRevenue=1000000000&state=FL
                     String findLeads = execute(request);
                     if(Objects.isNull(findLeads) || findLeads.isEmpty())
                         System.out.println("Response : Any results or invalid format");
@@ -38,6 +40,7 @@ public class Main {
                 System.out.print("Request : " );
             }
         }
+        scanner.close();
     }
 
     private static String execute(String url) {
