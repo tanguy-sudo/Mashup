@@ -24,7 +24,7 @@ Si vous utilisé le fichier ```run_mvn.sh``` ou ```run_jar.sh```
 * [xterm](https://doc.ubuntu-fr.org/xterm)
 
 ## Executables
-Pour simplifier la compilation et l'execution du projet deux choix soffre à vous.
+Pour simplifier la compilation et l'exécution du projet deux choix soffre à vous.  
 Dans le dossier exécutable se trouve les 4 archives JAR.
 ```
 - ./run_jar.sh : cela exécute les 4 JAR dans des terminaux.
