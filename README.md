@@ -45,14 +45,14 @@ Si vous téléchargez le projet en ZIP il  faudra par la suite le décompresser 
 ```
 - Sous Windows : 
   - Ouvrez l’Explorateur de fichiers et accédez au dossier compressé.
-  - Faites un clic droit pour sélectionner "Extraire tout" , puis suivez les instructions.
+  - Faites un clic droit pour sélectionner "Extraire tout", puis suivez les instructions.
 - Sous Linux :
   - Installer unzip : sudo apt install unzip
-  - Exécuter le commande : unzip Mashup-master.zip
+  - Exécuter la commande : unzip Mashup-master.zip
 - Sous Mac :
   - Double-cliquez sur le fichier.
   ou
-  - Exécuter le commande : unzip Mashup-master.zip
+  - Exécuter la commande : unzip Mashup-master.zip
 ```
 
 ### Client
